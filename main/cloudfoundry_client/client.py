@@ -29,6 +29,7 @@ from cloudfoundry_client.v3.entities import EntityManager as EntityManagerV3
 from cloudfoundry_client.v3.feature_flags import FeatureFlagManager
 from cloudfoundry_client.v3.organizations import OrganizationManager
 from cloudfoundry_client.v3.tasks import TaskManager
+from cloudfoundry_client.v3.users import UserManager
 
 _logger = logging.getLogger(__name__)
 
@@ -85,6 +86,7 @@ class V3(object):
         self.organizations = OrganizationManager(target_endpoint, credential_manager)
         self.service_instances = EntityManagerV3(target_endpoint, credential_manager, '/v3/service_instances')
         self.tasks = TaskManager(target_endpoint, credential_manager)
+        self.users = UserManager(target_endpoint, credential_manager)
 
 
 class CloudFoundryClient(CredentialManager):

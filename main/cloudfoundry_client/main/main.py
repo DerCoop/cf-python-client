@@ -144,6 +144,7 @@ def stream_logs(client: CloudFoundryClient, application_guid: str):
         pass
 
 
+# used?
 def _get_v2_client_domain(client: CloudFoundryClient, domain: str) -> Any:
     return getattr(client.v2, '%ss' % domain)
 
@@ -200,7 +201,11 @@ def main():
                       allow_creation=True, allow_deletion=True),
         CommandDomain(display_name='Domains', entity_name='domain',
                       api_version='v3',
-                      filter_list_parameters=[], allow_retrieve_by_name=True,
+                      filter_list_parameters=['guids', 'names', 'organization_guids'], allow_retrieve_by_name=True,
+                      allow_creation=True, allow_deletion=True),
+        CommandDomain(display_name='Users', entity_name='user',
+                      api_version='v3',
+                      filter_list_parameters=['guids'],
                       allow_creation=True, allow_deletion=True),
         CommandDomain(display_name='Routes', entity_name='route', name_property='host', filter_list_parameters=[]),
         TaskCommandDomain()
